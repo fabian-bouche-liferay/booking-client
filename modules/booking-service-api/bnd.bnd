@@ -1,0 +1,5 @@
+Bundle-Name: booking-service-api
+Bundle-SymbolicName: com.liferay.samples.fbo.booking.service.api
+
+Export-Package:\
+	com.liferay.samples.fbo.booking.service.api

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jaxws:bindings version="2.0" xmlns:jaxws="http://java.sun.com/xml/ns/jaxws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.1">
+
+	<jaxws:enableWrapperStyle>false</jaxws:enableWrapperStyle>
+
+	<!--jaxws:bindings node="*[local-name()='definitions']/*[local-name()='types']/*[local-name()='schema' and (@targetNamespace='http://liferay.com/samples/fbo/bookings-web-service')]"-->
+	<jaxws:bindings node="wsdl:definitions/wsdl:types/xs:schema[@targetNamespace='http://liferay.com/samples/fbo/bookings-web-service']">
+        <jxb:schemaBindings>
+            <jxb:package name="com.liferay.samples.fbo.bookings.model">
+            </jxb:package>
+        </jxb:schemaBindings>
+	</jaxws:bindings>
+
+</jaxws:bindings>

@@ -1,0 +1,10 @@
+Bundle-Name: booking-soap-client
+Bundle-SymbolicName: com.liferay.samples.fbo.booking.soap.client
+
+Export-Package: \
+	com.liferay.samples.fbo.bookings.model,\
+	com.liferay.samples.fbo.bookings_web_service
+
+Import-Package:\
+	org.apache.cxf.jaxws.spi,\
+	*

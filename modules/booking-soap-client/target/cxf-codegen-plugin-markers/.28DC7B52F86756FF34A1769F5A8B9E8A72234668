@@ -1,0 +1,1 @@
+[-b, file:/C:/dev/java-workspace/soap/booking-client/modules/booking-soap-client/src/main/resources/bindings/bookings.xml, -wsdlLocation, classpath:wsdl/bookings.wsdl, file:/C:/dev/java-workspace/soap/booking-client/modules/booking-soap-client/src/main/resources/wsdl/bookings.wsdl]

@@ -1,0 +1,4 @@
+Bundle-Name: cxf-provider-fragment
+Bundle-SymbolicName: com.liferay.sample.fbo.cxf.provider.fragment
+Fragment-Host:  com.liferay.portal.remote.soap.extender.impl
+Export-Package: org.apache.cxf.jaxws.spi;version=3.2.5

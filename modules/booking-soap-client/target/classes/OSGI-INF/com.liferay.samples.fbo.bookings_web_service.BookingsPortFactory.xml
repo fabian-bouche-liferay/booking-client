@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.liferay.samples.fbo.bookings_web_service.BookingsPortFactory" immediate="true" activate="activate" modified="activate">
+  <service>
+    <provide interface="com.liferay.samples.fbo.bookings_web_service.BookingsPortFactory"/>
+  </service>
+  <implementation class="com.liferay.samples.fbo.bookings_web_service.BookingsPortFactory"/>
+</scr:component>

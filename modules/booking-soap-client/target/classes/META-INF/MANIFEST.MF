@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1592947470806
+Bundle-ManifestVersion: 2
+Bundle-Name: booking-soap-client
+Bundle-SymbolicName: com.liferay.samples.fbo.booking.soap.client
+Bundle-Version: 1.0.0.202006232124
+Created-By: 1.8.0_252 (AdoptOpenJDK)
+Export-Package: com.liferay.samples.fbo.bookings.model;version="1.0.0"
+ ;uses:="javax.xml.bind.annotation,javax.xml.datatype",com.liferay.sam
+ ples.fbo.bookings_web_service;version="1.0.0";uses:="com.liferay.samp
+ les.fbo.bookings.model,javax.jws,javax.jws.soap,javax.xml.bind.annota
+ tion,javax.xml.namespace,javax.xml.ws,org.osgi.framework"
+Import-Package: org.apache.cxf.jaxws.spi;version="[3.2,4)",com.liferay
+ .samples.fbo.bookings.model;version="[1.0,2)",com.liferay.samples.fbo
+ .bookings_web_service;version="[1.0,2)",javax.jws;version="[1.1,2)",j
+ avax.jws.soap;version="[1.1,2)",javax.xml.bind.annotation;version="[2
+ .3,3)",javax.xml.datatype,javax.xml.namespace,javax.xml.ws;version="[
+ 2.4,3)",javax.xml.ws.spi;version="[2.4,3)",org.osgi.framework;version
+ ="[1.8,2)"
+Private-Package: bindings,wsdl
+Provide-Capability: osgi.service;objectClass:List<String>="com.liferay
+ .samples.fbo.bookings_web_service.BookingsPortFactory";uses:="com.lif
+ eray.samples.fbo.bookings_web_service"
+Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.compo
+ nent)(version>=1.3.0)(!(version>=2.0.0)))",osgi.ee;filter:="(&(osgi.e
+ e=JavaSE)(version=1.8))"
+Service-Component: OSGI-INF/com.liferay.samples.fbo.bookings_web_servi
+ ce.BookingsPortFactory.xml
+Tool: Bnd-4.3.0.201909301554
+
