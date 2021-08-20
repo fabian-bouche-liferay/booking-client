@@ -12,7 +12,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<cxf.version>3.2.5</cxf.version>
+		<cxf.version>3.2.14</cxf.version>
 	</properties>
 	
 	<dependencies>
@@ -44,6 +44,13 @@
         	<version>${cxf.version}</version>
         	<scope>provided</scope>
     	</dependency>
+    	
+    	<dependency>
+    		<groupId>org.apache.cxf</groupId>
+    		<artifactId>cxf-rt-features-logging</artifactId>
+        	<version>${cxf.version}</version>
+        	<scope>provided</scope>
+		</dependency>
 	
 		<dependency>
 			<groupId>com.liferay.portal</groupId>

@@ -35,14 +35,15 @@ import org.osgi.service.component.annotations.Reference;
 		)
 public class BookingLocalServiceImpl implements BookingLocalService {
 
+	private BookingsPort _bookingsPort;
+	
 	@Override
 	public Booking initBookingRequest(BookingInformation bookingInformation) {
 
 		InitBookingRequest request = new InitBookingRequest();
 		request.setBookingInformation(bookingInformation);
 
-		BookingsPort bookingsPort = bookingsPortFactory.getPort();
-		InitBookingResponse response = bookingsPort.initBooking(request);
+		InitBookingResponse response = _bookingsPort.initBooking(request);
 		
 		return response.getBooking();
 	}
@@ -60,8 +61,7 @@ public class BookingLocalServiceImpl implements BookingLocalService {
 
 			_log.info("Cache missed for bookingId " + bookingId);
 
-			BookingsPort bookingsPort = bookingsPortFactory.getPort();
-			CheckBookingStatusResponse response = bookingsPort.checkBookingStatus(request);
+			CheckBookingStatusResponse response = _bookingsPort.checkBookingStatus(request);
 			Booking booking = response.getBooking();
 			_portalCache.put(key, new BookingCacheItem(booking));
 			
@@ -85,8 +85,7 @@ public class BookingLocalServiceImpl implements BookingLocalService {
 		request.setStartingItem(BigInteger.valueOf(start));
 		request.setNumberOfItems(BigInteger.valueOf(count));
 		
-		BookingsPort bookingsPort = bookingsPortFactory.getPort();
-		ListBookingsResponse response = bookingsPort.listBookings(request);
+		ListBookingsResponse response = _bookingsPort.listBookings(request);
 
 		return response.getBookingId();
 	}
@@ -103,8 +102,7 @@ public class BookingLocalServiceImpl implements BookingLocalService {
 		
 		_log.info("Cache entry removed for bookingId " + bookingId);
 		
-		BookingsPort bookingsPort = bookingsPortFactory.getPort();
-		UpdateBookingStatusResponse response = bookingsPort.updateBookingStatus(request);
+		UpdateBookingStatusResponse response = _bookingsPort.updateBookingStatus(request);
 		
 		return response.getBooking();
 	}	
@@ -121,6 +119,7 @@ public class BookingLocalServiceImpl implements BookingLocalService {
 	@Activate
 	protected void activate() {
 		_portalCache = (PortalCache<BookingContentKey, BookingCacheItem>) _multiVMPool.getPortalCache(CACHE_NAME);
+		_bookingsPort = bookingsPortFactory.getPort();
 	}
 	
 	@Deactivate

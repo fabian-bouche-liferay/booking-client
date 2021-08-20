@@ -7,6 +7,9 @@ import java.util.Map;
 
 import javax.xml.ws.spi.Provider;
 
+import org.apache.cxf.endpoint.Client;
+import org.apache.cxf.ext.logging.LoggingInInterceptor;
+import org.apache.cxf.ext.logging.LoggingOutInterceptor;
 import org.apache.cxf.jaxws.spi.ProviderImpl;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
@@ -31,7 +34,7 @@ public class BookingsPortFactory {
 		if(providerServiceReference == null) {
 
 			ProviderImpl providerImpl = new ProviderImpl();
-
+			
 			Dictionary<String, Object> providerProperties = new Hashtable<>();
 			
 			bundleContext.registerService(Provider.class, providerImpl, providerProperties);
@@ -42,7 +45,14 @@ public class BookingsPortFactory {
 	}
 	
 	public BookingsPort getPort() {
-		return bookingsPortService.getBookingsPortSoap11();
+		
+		BookingsPort port = bookingsPortService.getBookingsPortSoap11();
+		
+		Client cxfClient = (Client) port;
+		cxfClient.getInInterceptors().add(new LoggingInInterceptor());
+		cxfClient.getOutInterceptors().add(new LoggingOutInterceptor());
+		
+		return port;
 	}
 
 }
