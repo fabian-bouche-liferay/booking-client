@@ -13,6 +13,16 @@ The project consists of 5 modules:
 * booking-service-impl: Its implementation that also implements object caching using the Liferay Caching framework with an example of cache invalidation when a Cached item is updated
 * booking-portlet: A sample portlet that uses the registered booking-service-api
 
+You also need to deploy the following module to Liferay which is not included by default:
+
+```
+<dependency>
+    <groupId>org.apache.cxf</groupId>
+    <artifactId>cxf-rt-features-logging</artifactId>
+    <version>3.2.14</version>
+</dependency>
+```
+
 This is a rough start that does not include the CXF configuration.
 
 Todo:
