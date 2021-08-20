@@ -1,19 +1,10 @@
 package com.liferay.samples.fbo.booking.service.impl;
 
-import java.io.Serializable;
-import java.math.BigInteger;
-import java.util.List;
-
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Deactivate;
-import org.osgi.service.component.annotations.Reference;
-
 import com.liferay.portal.kernel.cache.MultiVMPool;
 import com.liferay.portal.kernel.cache.PortalCache;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.util.HashUtil;
+import com.liferay.petra.lang.HashUtil;
 import com.liferay.samples.fbo.booking.service.api.BookingLocalService;
 import com.liferay.samples.fbo.bookings.model.Booking;
 import com.liferay.samples.fbo.bookings.model.BookingInformation;
@@ -28,6 +19,15 @@ import com.liferay.samples.fbo.bookings.model.UpdateBookingStatusRequest;
 import com.liferay.samples.fbo.bookings.model.UpdateBookingStatusResponse;
 import com.liferay.samples.fbo.bookings_web_service.BookingsPort;
 import com.liferay.samples.fbo.bookings_web_service.BookingsPortFactory;
+
+import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.List;
+
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
 
 @Component(
 		immediate = true,
