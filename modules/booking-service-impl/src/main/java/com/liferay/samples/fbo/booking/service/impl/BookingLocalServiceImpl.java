@@ -1,10 +1,10 @@
 package com.liferay.samples.fbo.booking.service.impl;
 
+import com.liferay.petra.lang.HashUtil;
 import com.liferay.portal.kernel.cache.MultiVMPool;
 import com.liferay.portal.kernel.cache.PortalCache;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.petra.lang.HashUtil;
 import com.liferay.samples.fbo.booking.service.api.BookingLocalService;
 import com.liferay.samples.fbo.bookings.model.Booking;
 import com.liferay.samples.fbo.bookings.model.BookingInformation;
@@ -23,6 +23,10 @@ import com.liferay.samples.fbo.bookings_web_service.BookingsPortFactory;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
+import java.util.concurrent.Future;
+
+import javax.xml.ws.AsyncHandler;
+import javax.xml.ws.Response;
 
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -88,6 +92,18 @@ public class BookingLocalServiceImpl implements BookingLocalService {
 		ListBookingsResponse response = _bookingsPort.listBookings(request);
 
 		return response.getBookingId();
+	}
+	
+	@Override
+	public Future<?> listBookingsAsync(int start, int count, AsyncHandler<ListBookingsResponse> listBookingsAsyncHandler) {
+
+		ListBookingsRequest request = new ListBookingsRequest();
+		request.setStartingItem(BigInteger.valueOf(start));
+		request.setNumberOfItems(BigInteger.valueOf(count));
+		
+		Future<?> response = _bookingsPort.listBookingsAsync(request, listBookingsAsyncHandler);
+		
+		return response;
 	}
 	
 	@Override

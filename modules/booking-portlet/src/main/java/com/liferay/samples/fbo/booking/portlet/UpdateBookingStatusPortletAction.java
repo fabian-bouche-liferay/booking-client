@@ -19,7 +19,7 @@ import org.osgi.service.component.annotations.Reference;
 		immediate = true,
 		property = {
 			"javax.portlet.name=" + BookingPortletKeys.BOOKING,
-			"mvc.command.name=updateBookingStatus"
+			"mvc.command.name=" + BookingPortletKeys.UPDATE_STATUS_ACTION_COMMAND
 		},
 		service = MVCActionCommand.class
 	)

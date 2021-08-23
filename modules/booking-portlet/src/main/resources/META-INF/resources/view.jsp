@@ -2,17 +2,7 @@
 
 <h1>Bookings</h1>
 
-<ul>
-	<c:forEach items="${bookings}" var="bookingId">
-	
-		<portlet:renderURL var="bookingURL">
-			<portlet:param name="mvcRenderCommandName" value="checkStatus" />
-			<portlet:param name="bookingId" value="${bookingId}" />
-		</portlet:renderURL>
-	
-		<li><a href="${bookingURL}">${bookingId}</a></li>
-	</c:forEach>
-</ul>
+<iframe src="${listBookingsAsyncResourceURL}"></iframe>
 
 <portlet:actionURL name="initBooking" var="initBookingActionURL" />
 
@@ -27,3 +17,13 @@
 		<aui:button type="submit"></aui:button>
 	</aui:button-row>
 </aui:form>
+
+<script type="text/javascript">
+
+	window.addEventListener("message", (event) => {
+		
+		document.location = event.data;
+		
+	}, false);
+	
+</script>

@@ -131,9 +131,14 @@
 									<bindingFiles>
 										<bindingFile>src/main/resources/bindings/bookings.xml</bindingFile>
 									</bindingFiles>
+									<asyncMethods>
+										<asyncMethod>initBooking</asyncMethod>
+										<asyncMethod>listBookings</asyncMethod>
+										<asyncMethod>updateBookingStatus</asyncMethod>
+										<asyncMethod>checkBookingStatus</asyncMethod>
+									</asyncMethods>
 			                    </wsdlOption>
 			                </wsdlOptions>
-			                
 			            </configuration>
 			            <goals>
 			                <goal>wsdl2java</goal>

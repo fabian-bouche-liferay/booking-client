@@ -1,10 +1,14 @@
 package com.liferay.samples.fbo.booking.service.api;
 
-import java.util.List;
-
 import com.liferay.samples.fbo.bookings.model.Booking;
 import com.liferay.samples.fbo.bookings.model.BookingInformation;
 import com.liferay.samples.fbo.bookings.model.BookingStatusEnum;
+import com.liferay.samples.fbo.bookings.model.ListBookingsResponse;
+
+import java.util.List;
+import java.util.concurrent.Future;
+
+import javax.xml.ws.AsyncHandler;
 
 public interface BookingLocalService {
 
@@ -14,6 +18,8 @@ public interface BookingLocalService {
 
 	public Booking initBookingRequest(BookingInformation bookingInformation);
 
-	List<String> listBookings(int start, int count);
-	
+	public List<String> listBookings(int start, int count);
+
+	Future<?> listBookingsAsync(int start, int count, AsyncHandler<ListBookingsResponse> listBookingsAsyncHandler);
+
 }
