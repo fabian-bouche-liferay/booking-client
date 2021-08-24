@@ -42,24 +42,6 @@ public class ListBookingsAsyncHandler implements AsyncHandler<ListBookingsRespon
 			resourceRequest.setAttribute("bookings", listBookingsResponse.getBookingId());
 			LOG.debug("ListBookingsAsyncHandler dispatches to /listAsync.jsp");
 
-			/*
-			try {
-				PrintWriter writer;
-				writer = this._asyncContext.getResourceResponse().getWriter();
-				writer.append("<ul>");
-				listBookingsResponse.getBookingId().forEach(booking -> {
-					writer.append("<li>");
-					writer.append(booking);
-					writer.append("</li>");
-				});
-				writer.append("</ul>");
-				writer.close();
-				this._asyncContext.complete();
-				
-			} catch (IllegalStateException | IOException e) {
-				LOG.error("ListBookingsAsyncHandler exception", e);
-			}*/			
-
 			portletRequestDispatcher = resourceRequest.getPortletContext().getRequestDispatcher("/listAsync.jsp");
 
 		} catch (InterruptedException | ExecutionException e) {
